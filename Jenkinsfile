@@ -3,7 +3,7 @@ pipeline {
     kubernetes {
       //cloud 'kubernetes'
       label 'tyagipod'
-      yaml 'KubernetesPod.yaml'
+      yamlFile 'KubernetesPod.yaml'
     }
   }
   stages {
