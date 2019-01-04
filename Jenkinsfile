@@ -1,15 +1,23 @@
 pipeline {
-    agent none
-    stages {
-        
-        stage('node-go') {
-            agent {
-                docker { image 'go:3.8-alpine' }
-            }
-            steps {
-                sh 'go version'
-                sh 'echo $GOPATH'
-            }
-        }
+  agent {
+    kubernetes {
+      //cloud 'kubernetes'
+      label 'tyagi-pod'
+      yaml 'KubernetesPod.yaml'
     }
+  }
+  stages {
+    stage('Run go') {
+      tools {
+        go 'go'
+      }
+      steps {
+        container('nodego') {
+          sh 'echo $GOROOT'
+          
+          
+        }
+      }
+    }
+}
 }
