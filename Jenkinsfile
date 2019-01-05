@@ -2,8 +2,8 @@ pipeline {
   agent {
     kubernetes {
       //cloud 'kubernetes'
-      label 'tyagi-pod'
-      yaml 'KubernetesPod.yaml'
+      label 'tyagipod'
+      yamlFile 'KubernetesPod.yaml'
     }
   }
   parameters {
