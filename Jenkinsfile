@@ -36,6 +36,7 @@ pipeline {
 	stage('Parameter') {
 	  steps {
 	    container('nodego') { 
+		  
 		  echo "Hello ${params.PERSON}"
 
           echo "Biography: ${params.BIOGRAPHY}"
@@ -47,5 +48,6 @@ pipeline {
           echo "Password: ${params.PASSWORD}"
 		}
 	}
+}
 }
 }
