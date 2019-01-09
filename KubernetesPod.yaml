@@ -3,6 +3,6 @@ kind: Pod
 spec:
   containers:
   - name: nodego
-    image: alpine:3.8
+    image: ubuntu:16.04
     command: ['cat']
     tty: true
