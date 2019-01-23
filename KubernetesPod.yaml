@@ -3,6 +3,6 @@ kind: Pod
 spec:
   containers:
   - name: nodego
-    image: ubuntu:16.04
+    image: tyagivasu/ubuntu-v1:16.04
     command: ['cat']
     tty: true
