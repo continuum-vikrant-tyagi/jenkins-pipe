@@ -6,19 +6,6 @@ pipeline {
       yamlFile 'KubernetesPod.yaml'
     }
   }
-  parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-
-        file(name: "FILE", description: "Choose a file to upload")
-  }
   stages {
     stage('Run go') {
       tools {
@@ -33,20 +20,32 @@ pipeline {
       }
     }
 	
-	stage('Parameter') {
+	stage('Upload') {
 	  steps {
 	    container('nodego') { 
-		  
-		  echo "Hello ${params.PERSON}"
-
-          echo "Biography: ${params.BIOGRAPHY}"
-
-          echo "Toggle: ${params.TOGGLE}"
-
-          echo "Choice: ${params.CHOICE}"
-
-          echo "Password: ${params.PASSWORD}"
-		}
+		sh "printenv"
+           	sh 'mkdir -p $WORKSPACE/continuum/agentService'
+           	sh 'mkdir -p $WORKSPACE/continuum/api'
+           	sh 'mkdir -p $WORKSPACE/scripts'
+           	sh 'mkdir -p $WORKSPACE/config'
+          	sh 'apt-get install zip -y'
+           	dir(WORKSPACE){
+           	sh 'zip -r continuum.zip continuum'
+           	sh 'zip -j platformagentservicedeploy.zip continuum.zip'
+           	}
+           	rtUpload (
+                    serverId: "Artifactory-1",
+                    spec: """{
+                            "files": [
+                                    {
+                                        "pattern": "$WORKSPACE/platformagentservicedeploy.zip",
+                                        "target": "test-jenkin-pipeline/$JOB_BASE_NAME/$BUILD_NUMBER/"
+                                    }
+                                ]
+                            }"""
+                )
+           	sh 'sleep 60'    
+	   }
 	}
 }
 }
