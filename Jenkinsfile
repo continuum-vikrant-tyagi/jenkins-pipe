@@ -23,7 +23,7 @@ pipeline {
 	stage('Upload') {
 	  steps {
 	    container('nodego') { 
-		sh "printenv"
+		//sh "printenv"
            	sh 'mkdir -p $WORKSPACE/continuum/agentService'
            	sh 'mkdir -p $WORKSPACE/continuum/api'
            	sh 'mkdir -p $WORKSPACE/scripts'
