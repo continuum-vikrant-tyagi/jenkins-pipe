@@ -1,14 +1,14 @@
 pipeline {
-  agent none
-  stages {
-    stage('Run go') {
-      agent {
+  agent agent {
         kubernetes {
         //cloud 'kubernetes'
         label 'tyagipod'
         yamlFile 'KubernetesPod.yaml'
         }
       }
+  stages {
+    stage('Run go') {
+      
       tools {
         go 'go'
       }
