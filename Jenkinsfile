@@ -33,7 +33,8 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
-    command: ['cat']
+    args: ["--dockerfile=Dockerfile",
+           "--context=$WORKSPACE"]
     tty: true
 """
      }
