@@ -52,6 +52,9 @@ spec:
           memory: "2048Mi"
 """
     }
+   }
+   steps {
+    echo 'Hello kaniko'
    }  
    }
  }
