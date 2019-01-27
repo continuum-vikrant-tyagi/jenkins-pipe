@@ -26,10 +26,10 @@ pipeline {
       }
     }
 	
-	 stage('build-docker') {
-    agent {
-    kubernetes {
-    yaml """
+	  stage('build-docker') {
+     agent {
+     kubernetes {
+     yaml """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -53,13 +53,13 @@ spec:
 """
     }
    }
-   steps {
-    //container('kaniko') {
-      echo 'Hello kaniko'
-      //sh 'ls -ltr /kaniko/sharedvolume'
-    //}
-    sh 'sleep 60'
-   }  
-   }
+       steps {
+    
+         echo 'Hello kaniko'
+         sh 'ls -ltr /kaniko/sharedvolume'
+    
+         sh 'sleep 60'
+        }  
+      }
  }
 }
