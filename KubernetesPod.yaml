@@ -8,7 +8,7 @@ spec:
     tty: true
     volumeMounts:
       - name: sharedvolume
-        mountPath: '/var/sharedvolume'
+        mountPath: /var/sharedvolume
     resources:
       requests:
         cpu: "50m"

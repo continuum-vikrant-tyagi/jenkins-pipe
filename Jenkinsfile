@@ -50,12 +50,12 @@ pipeline {
             memory: "2048Mi"
         volumeMounts:
           - name: sharedvolume
-            mountPath: '/kaniko/sharedvolume'
+            mountPath: /kaniko/sharedvolume
     """
         }
     }
      steps {
-      container('kaniko'){
+      container('kaniko') {
         sh 'ls -ltr /var/sharedvolume'
       }
       
