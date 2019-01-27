@@ -30,10 +30,11 @@ pipeline {
     agent {
       kubernetes {
         //cloud 'kubernetes'
-        label 'tyagipod'
         yaml """
     apiVersion: v1
     kind: Pod
+    metadata:
+      name: kaniko
     spec:
       containers:
       - name: kaniko
