@@ -11,7 +11,7 @@ spec:
         mountPath: '/var/sharedvolume'
 
   - name: kaniko
-    image: gcr.io/kaniko-project/executor:latest
+    image: gcr.io/kaniko-project/executor:debug
     volumeMounts:
       - name: sharedvolume
         mountPath: '/kaniko/sharedvolume'
