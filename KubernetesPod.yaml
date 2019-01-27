@@ -17,7 +17,7 @@ spec:
         mountPath: '/kaniko/shared'
 
 
-  restartPolicy: OnFailure
+  #restartPolicy: OnFailure
   volumes: 
   - name: sharedvolume
     emptyDir: {}
