@@ -45,7 +45,8 @@ spec:
      }
    }
      steps {
-      echo 'Hello kaniko'
+      container('kaniko')
+      sh 'ls /opt/app/shared/dockerfile ; echo $?'
      }
     
 	  }
