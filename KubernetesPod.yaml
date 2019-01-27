@@ -6,3 +6,9 @@ spec:
     image: tyagivasu/ubuntu-v1:16.04
     command: ['cat']
     tty: true
+    volumeMounts:
+    - mountPath: '/opt/app/shared'
+      name: sharedvolume
+  volumes: 
+  - name: sharedvolume
+    emptyDir: {}

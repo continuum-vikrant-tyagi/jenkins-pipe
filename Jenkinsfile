@@ -16,6 +16,9 @@ pipeline {
         container('nodego') {
           sh 'echo $GOROOT'
           sh "go env"
+          dir(WORKSPACE) {
+            sh "cp Dockerfile /opt/app/shared"
+          }
           
         }
       }
@@ -34,7 +37,10 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
     args: ["--dockerfile=Dockerfile",
-           "--context=$WORKSPACE"]
+           "--context=/opt/app/shared"]
+    volumeMounts:
+      - name: sharedvolume
+        mountPath: '/opt/app/shared'
 """
      }
    }
