@@ -31,10 +31,10 @@ pipeline {
       kubernetes {
         //cloud 'kubernetes'
         yaml """
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: kaniko
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
     spec:
       containers:
       - name: kaniko
@@ -51,9 +51,9 @@ pipeline {
         volumeMounts:
           - name: sharedvolume
             mountPath: /kaniko/sharedvolume
-    """
-        }
+"""
     }
+  }
      steps {
       container('kaniko') {
         sh 'ls -ltr /var/sharedvolume'
