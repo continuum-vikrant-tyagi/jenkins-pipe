@@ -27,7 +27,7 @@ pipeline {
 	
 	 stage('build-docker') {
      steps {
-      container('node')
+      container('nodego')
       sh 'ls -ltr /var/sharedvolume'
      }
     
