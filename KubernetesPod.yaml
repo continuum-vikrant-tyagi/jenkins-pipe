@@ -9,6 +9,13 @@ spec:
     volumeMounts:
       - name: sharedvolume
         mountPath: '/var/sharedvolume'
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "124Mi"
+      limits:
+        cpu: "2000m"
+        memory: "2048Mi"
 
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
@@ -17,7 +24,14 @@ spec:
     volumeMounts:
       - name: sharedvolume
         mountPath: '/kaniko/sharedvolume'
-
+    
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "124Mi"
+      limits:
+        cpu: "2000m"
+        memory: "2048Mi"
 
   #restartPolicy: OnFailure
   volumes: 
