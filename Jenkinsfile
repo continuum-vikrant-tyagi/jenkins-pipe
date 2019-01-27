@@ -17,7 +17,7 @@ pipeline {
           sh 'echo $GOROOT'
           sh "go env"
           dir(WORKSPACE) {
-            sh "cp Dockerfile /opt/app/shared"
+            sh "cp dockerfile /opt/app/shared"
           }
           
         }
@@ -36,7 +36,7 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
-    args: ["--dockerfile=Dockerfile",
+    args: ["--dockerfile=dockerfile",
            "--context=/opt/app/shared"]
     volumeMounts:
       - name: sharedvolume
