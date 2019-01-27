@@ -32,10 +32,9 @@ kind: Pod
 spec:
   containers:
   - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug
+    image: gcr.io/kaniko-project/executor:latest
     args: ["--dockerfile=Dockerfile",
            "--context=$WORKSPACE"]
-    tty: true
 """
      }
    }
