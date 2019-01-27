@@ -54,8 +54,11 @@ spec:
     }
    }
    steps {
-    echo 'Hello kaniko'
-    sh 'ls -ltr /kaniko/sharedvolume'
+    container('kaniko') {
+      echo 'Hello kaniko'
+      sh 'ls -ltr /kaniko/sharedvolume'
+    }
+    
    }  
    }
  }
