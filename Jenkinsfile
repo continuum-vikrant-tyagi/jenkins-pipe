@@ -35,22 +35,22 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: kaniko
-    spec:
-      containers:
-      - name: kaniko
-        image: gcr.io/kaniko-project/executor:debug
-        args: ["--dockerfile=dockerfile",
-               "--context=/kaniko/sharedvolume"]
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "124Mi"
-          limits:
-            cpu: "2000m"
-            memory: "2048Mi"
-        volumeMounts:
-          - name: sharedvolume
-            mountPath: /kaniko/sharedvolume
+spec:
+  containers:
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:debug
+      args: ["--dockerfile=dockerfile",
+             "--context=/kaniko/sharedvolume"]
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "124Mi"
+        limits:
+          cpu: "2000m"
+          memory: "2048Mi"
+      volumeMounts:
+        - name: sharedvolume
+          mountPath: /kaniko/sharedvolume
 """
     }
   }
