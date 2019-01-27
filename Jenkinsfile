@@ -42,7 +42,7 @@ spec:
              "--context=/kaniko/sharedvolume"]
       volumeMounts:
         - name: sharedvolume
-          mountPath: '/kaniko/sharedvolume' 
+          mountPath: /kaniko/sharedvolume
       resources:
         requests:
           cpu: "50m"
@@ -55,6 +55,7 @@ spec:
    }
    steps {
     echo 'Hello kaniko'
+    sh 'ls -ltr /kaniko/sharedvolume'
    }  
    }
  }
