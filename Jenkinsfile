@@ -54,11 +54,11 @@ spec:
     }
    }
    steps {
-    container('kaniko') {
+    //container('kaniko') {
       echo 'Hello kaniko'
-      sh 'ls -ltr /kaniko/sharedvolume'
-    }
-    
+      //sh 'ls -ltr /kaniko/sharedvolume'
+    //}
+    sh 'sleep 60'
    }  
    }
  }
