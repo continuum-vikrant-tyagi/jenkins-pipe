@@ -25,25 +25,25 @@ pipeline {
     }
 	
 	 stage('build-docker') {
-	  agent {
-      kubernetes {
+	  //agent {
+      //kubernetes {
       //cloud 'kubernetes'
-      label 'kaniko'
-      yaml """
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug
-    args: ["--dockerfile=dockerfile",
-           "--context=/opt/app/shared"]
-    volumeMounts:
-      - name: sharedvolume
-        mountPath: '/opt/app/shared'
-"""
-     }
-   }
+      //label 'kaniko'
+      //yaml """
+//apiVersion: v1
+//kind: Pod
+//spec:
+  //containers:
+  //- name: kaniko
+    //image: gcr.io/kaniko-project/executor:debug
+    //args: ["--dockerfile=dockerfile",
+           //"--context=/opt/app/shared"]
+    //volumeMounts:
+      //- name: sharedvolume
+        //mountPath: '/opt/app/shared'
+//"""
+     //}
+   //}
      steps {
       container('kaniko')
       sh 'ls /opt/app/shared/dockerfile ; echo $?'

@@ -7,8 +7,17 @@ spec:
     command: ['cat']
     tty: true
     volumeMounts:
-    - mountPath: '/opt/app/shared'
-      name: sharedvolume
+      - name: sharedvolume
+        mountPath: '/opt/app/shared'
+
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:latest
+    volumeMounts:
+      - name: sharedvolume
+        mountPath: '/kaniko/shared'
+
+
+  restartPolicy: OnFailure
   volumes: 
   - name: sharedvolume
     emptyDir: {}
