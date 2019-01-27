@@ -19,7 +19,6 @@ pipeline {
           dir(WORKSPACE) {
             sh 'cp dockerfile /var/sharedvolume'
             sh 'cp hello.html /var/sharedvolume'
-            sh 'ls -ltr /var/sharedvolume'
           }
           
         }
@@ -28,7 +27,7 @@ pipeline {
 	
 	 stage('build-docker') {
      steps {
-      container('kaniko')
+      container('node')
       sh 'ls -ltr /var/sharedvolume'
      }
     
