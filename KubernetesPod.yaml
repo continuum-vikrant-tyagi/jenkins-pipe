@@ -8,13 +8,13 @@ spec:
     tty: true
     volumeMounts:
       - name: sharedvolume
-        mountPath: '/opt/app/shared'
+        mountPath: '/var/sharedvolume'
 
   - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
     volumeMounts:
       - name: sharedvolume
-        mountPath: '/kaniko/shared'
+        mountPath: '/kaniko/sharedvolume'
 
 
   #restartPolicy: OnFailure
