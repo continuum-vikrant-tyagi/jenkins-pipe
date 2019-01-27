@@ -28,7 +28,7 @@ pipeline {
 	
 	 stage('build-docker') {
     agent {
-    kubernetes true
+    kubernetes {
     yaml """
 apiVersion: v1
 kind: Pod
@@ -52,7 +52,7 @@ spec:
           memory: "2048Mi"
 """
     }
-    
+   }  
    }
  }
 }
