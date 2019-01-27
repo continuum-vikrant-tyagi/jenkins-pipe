@@ -27,38 +27,13 @@ pipeline {
     }
 	
 	  stage('build-docker') {
-     agent {
-     kubernetes {
-     yaml """
-apiVersion: v1
-kind: Pod
-metadata:
-  name: kaniko
-spec:
-  containers:
-    - name: kaniko
-      image: gcr.io/kaniko-project/executor:debug
-      args: ["--dockerfile=dockerfile",
-             "--context=/kaniko/sharedvolume"]
-      volumeMounts:
-        - name: sharedvolume
-          mountPath: /var/sharedvolume
-      resources:
-        requests:
-          cpu: "50m"
-          memory: "124Mi"
-        limits:
-          cpu: "2000m"
-          memory: "2048Mi"
-"""
-    }
-   }
        steps {
+         container('kaniko') {
+            echo 'Hello kaniko'
+            //sh 'ls -ltr /var/sharedvolume'
     
-         echo 'Hello kaniko'
-         sh 'ls -ltr /var/sharedvolume'
-    
-         sh 'sleep 60'
+            sh 'sleep 60'
+         }
         }  
       }
  }
