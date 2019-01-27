@@ -37,11 +37,11 @@ spec:
     tty: true
 """
      }
+   }
      steps {
       echo 'Hello kaniko'
      }
     
 	  }
-   }
   }
  }
