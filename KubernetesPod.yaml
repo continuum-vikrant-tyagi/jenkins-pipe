@@ -26,7 +26,7 @@ spec:
     tty: true
     volumeMounts:
       - name: sharedvolume
-        mountPath: /root/sharedvolume
+        mountPath: /root/shared
     resources:
       requests:
         cpu: "50m"
