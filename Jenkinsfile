@@ -34,7 +34,6 @@ pipeline {
             sh '''#!/busybox/sh
             /kaniko/executor -f `pwd`/dockerfile -c `pwd` --insecure --skip-tls-verify --cache=false --no-push
             '''
-            sh 'sleep 30'
          }
         }  
       }
