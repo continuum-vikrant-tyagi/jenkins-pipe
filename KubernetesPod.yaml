@@ -33,7 +33,7 @@ spec:
         memory: "124Mi"
       limits:
         cpu: "2000m"
-         memory: "2048Mi"
+        memory: "2048Mi"
 
   #restartPolicy: OnFailure
   volumes: 
