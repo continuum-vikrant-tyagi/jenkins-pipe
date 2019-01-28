@@ -6,6 +6,9 @@ pipeline {
         yamlFile 'KubernetesPod.yaml'
         }
       }
+  environment {
+        PATH = "/busybox:/kaniko:$PATH"
+      }
   stages {
     //stage('Run go') {
       
@@ -27,9 +30,10 @@ pipeline {
 	
 	  stage('build-docker') {
        steps {
-         container('kaniko') {
-            sh 'ls /root'
-    
+         container(name: 'kaniko', shell: '/busybox/sh') {
+            sh '''#!/busybox/sh
+            /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true
+            '''
             sh 'sleep 30'
          }
         }  
