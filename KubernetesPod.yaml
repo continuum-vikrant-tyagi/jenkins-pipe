@@ -21,21 +21,21 @@ spec:
         memory: "2048Mi"
 
   - name: kaniko
-      image: gcr.io/kaniko-project/executor:debug
-      args: ["--dockerfile=dockerfile",
-             "--context=/kaniko/sharedvolume"]
-      volumeMounts:
-        - name: sharedvolume
-          mountPath: /kaniko/sharedvolume
-      resources:
-        requests:
-          cpu: "50m"
-          memory: "124Mi"
-        limits:
-          cpu: "2000m"
-          memory: "2048Mi"
+    image: gcr.io/kaniko-project/executor:debug
+    args: ["--dockerfile=dockerfile",
+           "--context=/kaniko/sharedvolume"]
+    volumeMounts:
+      - name: sharedvolume
+        mountPath: /kaniko/sharedvolume
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "124Mi"
+      limits:
+        cpu: "2000m"
+         memory: "2048Mi"
 
   #restartPolicy: OnFailure
   volumes: 
-  - name: sharedvolume
-    emptyDir: {}
+    - name: sharedvolume
+      emptyDir: {}
