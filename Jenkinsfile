@@ -10,23 +10,23 @@ pipeline {
         PATH = "/busybox:/kaniko:$PATH"
       }
   stages {
-    stage('Run go') {
+    //stage('Run go') {
       
       //tools {
         //go 'go'
       //}
-      steps {
-        container('nodego') {
+      //steps {
+        //container('nodego') {
           //sh 'echo $GOROOT'
           //sh "go env"
-          dir(WORKSPACE) {
-            sh 'cp dockerfile /var/sharedvolume'
-            sh 'cp hello.html /var/sharedvolume'
-          }
+          //dir(WORKSPACE) {
+            //sh 'cp dockerfile /var/sharedvolume'
+            //sh 'cp hello.html /var/sharedvolume'
+          //}
           
-        }
-      }
-    }
+        //}
+      //}
+    //}
 	
 	  stage('build-docker') {
        steps {
