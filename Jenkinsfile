@@ -2,7 +2,7 @@ pipeline {
   agent {
         kubernetes {
         //cloud 'kubernetes'
-        //label 'tyagipod'
+        label 'kaniko'
         yamlFile 'KubernetesPod.yaml'
         }
       }
