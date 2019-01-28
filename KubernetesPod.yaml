@@ -22,8 +22,8 @@ spec:
 
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
-    args: ["--dockerfile=dockerfile",
-           "--context=/kaniko/sharedvolume"]
+    command: ['cat']
+    tty: true
     volumeMounts:
       - name: sharedvolume
         mountPath: /kaniko/sharedvolume

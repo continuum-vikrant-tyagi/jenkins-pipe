@@ -28,10 +28,9 @@ pipeline {
 	  stage('build-docker') {
        steps {
          container('kaniko') {
-            echo 'Hello kaniko'
-            //sh 'ls -ltr /var/sharedvolume'
+            sh 'ls -ltr /kaniko/sharedvolume'
     
-            sh 'sleep 60'
+            sh 'sleep 30'
          }
         }  
       }
