@@ -20,6 +20,7 @@ pipeline {
             sh '''#!/busybox/sh
             /kaniko/executor -f $WORKSPACE/dockerfile -c `pwd` --insecure --skip-tls-verify --cache=false --no-push
             '''
+            sleep(60)
          }
         }  
       }
