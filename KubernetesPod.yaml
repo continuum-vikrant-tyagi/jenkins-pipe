@@ -8,9 +8,6 @@ spec:
     image: tyagivasu/ubuntu-v1:16.04
     command: ['cat']
     tty: true
-    volumeMounts:
-      - name: sharedvolume
-        mountPath: /var/sharedvolume
     resources:
       requests:
         cpu: "50m"
