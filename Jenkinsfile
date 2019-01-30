@@ -24,7 +24,7 @@ pipeline {
         steps {
          container(name: 'kaniko', shell: '/busybox/sh') {
             sh '''#!/busybox/sh
-            /kaniko/executor -f $WORKSPACE/dockerfile -c --insecure --skip-tls-verify --cache=false --no-push
+            /kaniko/executor -f $WORKSPACE/dockerfile -c `pwd` --insecure --skip-tls-verify --cache=false --no-push
             '''
             sleep(60)
          }
