@@ -10,8 +10,9 @@ pipeline {
         PATH = "/busybox:/kaniko:$PATH"
       }
   stages {
-	
-	  stage('hello') {
+	 stage('Run') {
+    parallel {
+     stage('hello') {
         steps {
           container('nodego') {
             sh 'echo hello nodego'
@@ -19,9 +20,7 @@ pipeline {
         }
     }
     
-    post {
-      success {
-       stage('build-dockerImage') {
+    stage('build-dockerImage') {
         steps {
          container(name: 'kaniko', shell: '/busybox/sh') {
             sh '''#!/busybox/sh
@@ -31,7 +30,7 @@ pipeline {
          }
         }  
       }
-     }
     }
+   }    
  }
 }
