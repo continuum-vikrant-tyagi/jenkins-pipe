@@ -24,6 +24,9 @@ spec:
     command:
     - /busybox/cat
     tty: true
+    volumeMounts:
+      - name: jenkins-docker-cfg
+        mountPath: /root
     resources:
       requests:
         cpu: "50m"
@@ -34,5 +37,11 @@ spec:
 
   #restartPolicy: OnFailure
   volumes: 
-    - name: sharedvolume
-      emptyDir: {}
+    - name: jenkins-docker-cfg
+      projected:
+        sources:
+        - secret:
+            name: vikrant-docker
+            items:
+              - key: .dockerconfigjson
+                path: .docker/config.json
